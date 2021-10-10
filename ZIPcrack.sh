@@ -46,7 +46,7 @@ function check(){
 }
 
 function banner(){
-        echo -e "$Red _________________$End";
+        echo -e "$Red  _________________$End";
         echo -e "$Red |___  /_   _| ___ \ $End";
         echo -e "$Red    / /  | | | |_/ /$End";
         echo -e "$Red   / /   | | |  __/$End";
