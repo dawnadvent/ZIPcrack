@@ -46,16 +46,16 @@ function check(){
 }
 
 function banner(){
-        echo -e "$Red _________________";
-        echo -e "$Red |___  /_   _| ___ \ ";
-        echo -e "$Red    / /  | | | |_/ /";
-        echo -e "$Red   / /   | | |  __/";
-        echo -e "$Red  / /____| |_| |";
-        echo -e "$Red \_____/\___/\_|$Blue     _ ";
-        echo -e "$Blue  ___ _ __ __ _  ___| | __";
-        echo -e "$Blue / __| '__/ _\` |/ __| |/ /";
-        echo -e "$Blue| (__| | | (_| | (__|   < ";
-        echo -e "$Blue \___|_|  \__,_|\___|_|\_\\";
+        echo -e "$Red _________________$End";
+        echo -e "$Red |___  /_   _| ___ \ $End";
+        echo -e "$Red    / /  | | | |_/ /$End";
+        echo -e "$Red   / /   | | |  __/$End";
+        echo -e "$Red  / /____| |_| |$End";
+        echo -e "$Red \_____/\___/\_|$Blue     _ $End";
+        echo -e "$Blue  ___ _ __ __ _  ___| | __$End";
+        echo -e "$Blue / __| '__/ _\` |/ __| |/ /$End";
+        echo -e "$Blue| (__| | | (_| | (__|   < $End";
+        echo -e "$Blue \___|_|  \__,_|\___|_|\_\\ $End";
         echo ""
 }
 
