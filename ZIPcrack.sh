@@ -71,12 +71,12 @@ function main(){
 }
 
 function info(){
-                echo -e "$White$var1$Red$var7$White$var2 $White$var13 $CyanLight$zipfile$End"
-                sleep 1
-                echo -e "$White$var1$Red$var7$White$var2 $White$var14 $CyanLight$wordlist$End"
-                sleep 1
-                echo -e "$White$var1$YellowLight$var3$White$var2$Red$White $var21$End"
-                sleep 1
+        echo -e "$White$var1$Red$var7$White$var2 $White$var13 $CyanLight$zipfile$End"
+        sleep 1
+        echo -e "$White$var1$Red$var7$White$var2 $White$var14 $CyanLight$wordlist$End"
+        sleep 1
+        echo -e "$White$var1$YellowLight$var3$White$var2$Red$White $var21$End"
+        sleep 1
 }
 
 if [ ! -z $wordlist ]; then
