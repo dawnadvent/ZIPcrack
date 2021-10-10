@@ -30,8 +30,15 @@ declare -r var17='Error!'
 declare -r var18='Fuck!'
 declare -r var19='it was not possible to crack his zip'
 declare -r var20='7z not installed'
+declare -r var21='Status:'
 declare -r wordlist="$1"
 declare -r zipfile="$2"
+
+#progress
+lines=$(/usr/bin/wc -l $wordlist)
+regex="([0-9]+).$wordlist"
+[[ $lines =~ $regex ]]
+fileSize="${BASH_REMATCH[1]}"
 
 function check(){
                 which 7z > /dev/null 2>&1
@@ -63,6 +70,15 @@ function main(){
         echo -e "$White$var1$YellowLight$var3$White$var2$Red $var12 $White$var9 $Red$var6$White$var10$Red$var5 $Red$var6$White$var11$Red$var5$End"
 }
 
+function info(){
+                echo -e "$White$var1$Red$var7$White$var2 $White$var13 $CyanLight$zipfile$End"
+                sleep 1
+                echo -e "$White$var1$Red$var7$White$var2 $White$var14 $CyanLight$wordlist$End"
+                sleep 1
+                echo -e "$White$var1$YellowLight$var3$White$var2$Red$White $var21$End"
+                sleep 1
+}
+
 if [ ! -z $wordlist ]; then
         check
         banner
@@ -75,25 +91,26 @@ else
 fi
 
 if [ ! -z $zipfile ]; then
-        :
+        info
 else
         main
         exit 0
 fi
 
 while read password; do
+                line=$((line + 1))
+                progress=$((line * 100 / fileSize))
+                echo -ne "\r$YellowLight    $line/$fileSize ($progress%) ($password) $End"
                 /usr/bin/7z t -p$password $zipfile &>/dev/null
         if [ $? -eq 0 ]; then
-                echo -e "$White$var1$Red$var7$White$var2 $White$var13 $CyanLight$zipfile"
-                sleep 2
-                echo -e "$White$var1$Red$var7$White$var2 $White$var14 $CyanLight$wordlist"
-                sleep 2
                 f1=$(/usr/bin/cat $wordlist | /usr/bin/grep "^$password$" -n | /usr/bin/cut -d: -f1)
-                echo -e "$White$var1$GreenLight$var8$White$var2 $Red$var15 $GreenLight$password$Red $var16 $GreenLight$f1"
-                sleep 4
+                echo -e "\n$White$var1$GreenLight$var8$White$var2 $Red$var15 $GreenLight$password$Red $var16 $GreenLight$f1"
+                echo ""
+                sleep 2
                 exit 0
         fi
 done < $wordlist
-echo -e "$White$var1$Red$var4$White$var2 $Red$var18 $White$var19$End"
-sleep 4
+echo -e "\r$White$var1$Red$var4$White$var2 $Red$var18 $White$var19$End"
+echo ""
+sleep 2
 exit 0
