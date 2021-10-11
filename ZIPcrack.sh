@@ -6,7 +6,7 @@ declare -r Red="\e[31m"
 declare -r GreenLight="\e[92m"
 declare -r YellowLight="\e[93m"
 declare -r CyanLight="\e[96m"
-declare -r Blue="\033[1;34m"
+declare -r Blue="\e[34m"
 declare -r End="\e[0m"
 
 #var
@@ -34,12 +34,6 @@ declare -r var21='Status:'
 declare -r wordlist="$1"
 declare -r zipfile="$2"
 
-#progress
-lines=$(/usr/bin/wc -l $wordlist)
-regex="([0-9]+).$wordlist"
-[[ $lines =~ $regex ]]
-fileSize="${BASH_REMATCH[1]}"
-
 function check(){
                 which 7z > /dev/null 2>&1
         if [ "$(echo $?)" == "0" ]; then
@@ -53,12 +47,12 @@ function check(){
 }
 
 function banner(){
-        echo -e "$Red  _________________$End";
-        echo -e "$Red |___  /_   _| ___ \ $End";
-        echo -e "$Red    / /  | | | |_/ /$End";
-        echo -e "$Red   / /   | | |  __/$End";
-        echo -e "$Red  / /____| |_| |$End";
-        echo -e "$Red \_____/\___/\_|$Blue     _ $End";
+        echo -e "$Red      _________________$End";
+        echo -e "$Red     |___  /_   _| ___ \ $End";
+        echo -e "$Red        / /  | | | |_/ /$End";
+        echo -e "$Red       / /   | | |  __/$End";
+        echo -e "$Red      / /____| |_| |$End";
+        echo -e "$Red     \_____/\___/\_|$Blue _ $End";
         echo -e "$Blue  ___ _ __ __ _  ___| | __$End";
         echo -e "$Blue / __| '__/ _\` |/ __| |/ /$End";
         echo -e "$Blue| (__| | | (_| | (__|   < $End";
@@ -68,6 +62,7 @@ function banner(){
 
 function main(){
         echo -e "$White$var1$YellowLight$var3$White$var2$Red $var12 $White$var9 $Red$var6$White$var10$Red$var5 $Red$var6$White$var11$Red$var5$End"
+        echo ""
 }
 
 function info(){
@@ -97,9 +92,16 @@ else
         exit 0
 fi
 
+#progress
+lines=$(/usr/bin/wc -l $wordlist)
+regex="([0-9]+).$wordlist"
+[[ $lines =~ $regex ]]
+siz="${BASH_REMATCH[1]}"
+
 while read password; do
+
                 line=$((line + 1))
-                progress=$((line * 100 / fileSize))
+                progress=$((line * 100 / siz))
                 echo -ne "\r$YellowLight    $line/$fileSize ($progress%) ($password) $End"
                 /usr/bin/7z t -p$password $zipfile &>/dev/null
         if [ $? -eq 0 ]; then
