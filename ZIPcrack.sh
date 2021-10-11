@@ -99,7 +99,6 @@ regex="([0-9]+).$wordlist"
 siz="${BASH_REMATCH[1]}"
 
 while read password; do
-
                 line=$((line + 1))
                 progress=$((line * 100 / siz))
                 echo -ne "\r$YellowLight    $line/$fileSize ($progress%) ($password) $End"
