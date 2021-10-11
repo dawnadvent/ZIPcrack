@@ -4,23 +4,17 @@
 
 ![](/1.png)
 
-* Usage
+- [<kbd>Use</kbd>]
 
 ```cmd
 root@kali:~# ZIPcrack /usr/share/wordlists/rockyou.txt file.zip
 ```
 
-* Download / Install
+- [<kbd>Download / Install</kbd>]
+
 ```cmd
-root@kali:~# wget "https://raw.githubusercontent.com/d4t4s3c/ZIPcrack/main/ZIPcrack.sh" -O /opt/ZIPcrack.sh
-root@kali:~# chmod +x /opt/ZIPcrack.sh
+root@kali:~# wget -q "https://raw.githubusercontent.com/d4t4s3c/ZIPcrack/main/ZIPcrack.sh" -O /usr/bin/ZIPcrack
+root@kali:~# chmod +x /usr/bin/ZIPcrack
 ```
-
-* Add Alias
-  * Bash --------> `root@kali:~# echo "alias ZIPcrack='/opt/ZIPcrack.sh'" >> /root/.bashrc`
-  * Zsh ---------> `root@kali:~# echo "alias ZIPcrack='/opt/ZIPcrack.sh'" >> /root/.zshrc`
-  * Powerlevel --> `root@kali:~# echo "alias ZIPcrack='/opt/ZIPcrackk.sh'" >> /root/.p10k.zsh`
-
-(Close terminal and reopen again)
 
 ---
