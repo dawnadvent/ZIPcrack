@@ -2,7 +2,7 @@
 
 **Brute Force - Password - ZIP**
 
-![](/screenshot.png)
+![](/1.png)
 
 * Usage
 
